@@ -1,0 +1,39 @@
+[System]
+Name='tsfis'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='x1'
+Range=[0 30]
+NumMFs=2
+MF1='small':'trimf',[-16 0 16]
+MF2='big':'trapmf',[10 20 30 31]
+
+[Input2]
+Name='x2'
+Range=[0 30]
+NumMFs=2
+MF1='small':'trimf',[-12.5 0 8]
+MF2='big':'trapmf',[2 10 30 31]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='y1':'linear',[1 1 0]
+MF2='y2':'linear',[2 0 0]
+MF3='y3':'linear',[0 3 0]
+
+[Rules]
+1 1, 1 (1) : 1
+2 0, 2 (1) : 1
+0 2, 2 (1) : 1

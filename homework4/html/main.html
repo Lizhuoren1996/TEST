@@ -1,0 +1,324 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>main</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-06-18"><meta name="DC.source" content="main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">1911055&#26446;&#25305;&#20154;</a></li><li><a href="#2">&#26102;&#22495;&#20998;&#26512;</a></li><li><a href="#3">&#21462;-3dB</a></li><li><a href="#4">&#35745;&#31639;M/IM&#24207;&#21015;&#21442;&#25968;</a></li><li><a href="#7">ident</a></li></ul></div><h2 id="1">1911055&#26446;&#25305;&#20154;</h2><p>clc; clear; num=[1]; den=[1 1];              % &#19968;&#38454;&#31995;&#32479; den=[1 0.6 1]; num=[0.04798 0.0464]; den=[1 -1.81 0.9048]; noiseAmp=0.1; sys = tf(num,den);</p><pre class="codeinput">sys=linsys1;
+</pre><h2 id="2">&#26102;&#22495;&#20998;&#26512;</h2><pre class="codeinput">tmp = stepinfo(sys);
+Ts=tmp.SettlingTime
+</pre><pre class="codeoutput">
+Ts =
+
+   78.2415
+
+</pre><h2 id="3">&#21462;-3dB</h2><pre class="codeinput">[mag,ph,w]=bode(sys);   <span class="comment">%&#20381;&#27425;&#36820;&#22238;&#24133;&#39057;&#12289;&#30456;&#39057;&#12289;&#35282;&#39057;&#29575;</span>
+mag = 20*log10(squeeze(mag));    <span class="comment">% dB</span>
+<span class="comment">% plot(mag,w)</span>
+w0=spline(mag,w,mag(1)-3)    <span class="comment">% rad/s</span>
+</pre><pre class="codeoutput">
+w0 =
+
+    0.0499
+
+</pre><h2 id="4">&#35745;&#31639;M/IM&#24207;&#21015;&#21442;&#25968;</h2><pre class="codeinput">fM=w0/2/pi     <span class="comment">% Hz</span>
+delta=0.3/fM
+delta = 30;     <span class="comment">%&#26681;&#25454;&#19978;&#38754;&#30340;&#20540;&#65292;&#25163;&#21160;&#21462;&#20540;</span>
+Np=[1/(fM*delta),1.2*Ts/delta,1.5*Ts/delta]    <span class="comment">%&#30830;&#23450;M&#24207;&#21015;&#30340;&#38271;&#24230;</span>
+
+M_Np=max(round(max(Np)),7);
+M_T=M_Np*delta;
+M_Np=M_Np*2;
+M_T=M_T*2;
+M_d=delta;
+<span class="keyword">if</span> M_T&gt;Ts
+    disp(<span class="string">'M&#24207;&#21015;&#21608;&#26399;&#22823;&#20110;&#21407;&#22987;&#31995;&#32479;'</span>)
+<span class="keyword">end</span>
+simTime=11*M_T
+</pre><pre class="codeoutput">
+fM =
+
+    0.0079
+
+
+delta =
+
+   37.7736
+
+
+Np =
+
+    4.1971    3.1297    3.9121
+
+M&#24207;&#21015;&#21608;&#26399;&#22823;&#20110;&#21407;&#22987;&#31995;&#32479;
+
+simTime =
+
+        4620
+
+</pre><pre class="codeinput">sim(<span class="string">'mysysIM.slx'</span>);
+</pre><pre class="codeoutput">&#35686;&#21578;: Square root of a negative number
+in '&lt;a
+href="matlab:open_and_hilite_hyperlink
+('mysysIM/Water-Tank
+System/Sqrt','error')"&gt;mysysIM/Water-Tank
+System/Sqrt&lt;/a&gt;'. Consider setting the
+'Output signal type' to complex. 
+</pre><pre class="codeinput">Q=iddata(myout,myin,M_d);
+figure(2)
+plot(Q);<span class="comment">%&#30011;&#20986;&#23553;&#35013;&#30340;&#36755;&#20837;&#36755;&#20986;&#25968;&#25454;</span>
+dataStart = M_T/M_d;
+Qe = Q([dataStart:end]);<span class="comment">%       &#21435;&#31532;&#19968;&#20010;&#21608;&#26399;</span>
+Qd=detrend(Qe);     <span class="comment">%&#21435;&#36235;&#21183;&#39033;</span>
+<span class="comment">% plot(Qe,Qd);</span>
+Qde=Qd([1:end/2]);  <span class="comment">%&#21069;&#19968;&#21322;&#25968;&#25454;&#29992;&#26469;&#27979;&#35797;</span>
+Qdv=Qd([end/2+1:end]);  <span class="comment">%&#21518;&#19968;&#21322;&#25968;&#25454;&#29992;&#26469;&#39564;&#35777;</span>
+figure(3)
+plot(Q,Qd,Qde,Qdv);
+</pre><img vspace="5" hspace="5" src="main_01.png" alt=""> <img vspace="5" hspace="5" src="main_02.png" alt=""> <h2 id="7">ident</h2><pre class="codeinput">NN=struc(1:10,1:10,1:10);
+Loss_fun= arxstruc(Qde,Qdv,NN);
+order =[4 4 1];
+
+Model=arx(Qde,order)
+
+figure(4)
+compare(Qdv,Model);<span class="comment">%&#39044;&#27979;&#36755;&#20986;&#19982;&#23454;&#38469;&#36755;&#27604;&#36739;</span>
+figure(5)
+resid(Model,Qde); <span class="comment">%&#27169;&#22411;&#39044;&#27979;&#35823;&#24046;&#21450;&#30456;&#20851;&#20998;&#26512;</span>
+
+
+Model_tf_d=tf(Model) <span class="comment">%&#31163;&#25955;&#27169;&#22411;</span>
+Model_tf_c=d2c(Model_tf_d) <span class="comment">%&#36830;&#32493;&#27169;&#22411;</span>
+<span class="comment">% Model_tf_c=d2c(Model_tf_d,'tustin')</span>
+
+num=cell2mat(Model_tf_d.num)
+den=cell2mat(Model_tf_d.den)
+num1=cell2mat(Model_tf_c.num)
+den1=cell2mat(Model_tf_c.den)
+sim(<span class="string">'myverify2.slx'</span>)
+
+
+<span class="comment">% plot(simVerifyOut.time,simVerifyOut.signals.values(:,1),simVerifyOut.time,simVerifyOut.signals.values(:,2));</span>
+</pre><pre class="codeoutput">
+Model =
+Discrete-time ARX model: A(z)y(t) = B(z)u(t) + e(t)            
+  A(z) = 1 - 1.305 z^-1 + 1.379 z^-2 - 1.232 z^-3 + 0.1649 z^-4
+                                                               
+  B(z) = 2.549 z^-1 - 2.955 z^-2 + 3.095 z^-3 - 2.692 z^-4     
+                                                               
+Sample time: 30 seconds
+  
+Parameterization:
+   Polynomial orders:   na=4   nb=4   nk=1
+   Number of free coefficients: 8
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                        
+Estimated using ARX on time domain data "Qde". 
+Fit to estimation data: 100% (prediction focus)
+FPE: 2.524e-14, MSE: 1.794e-14                 
+
+Model_tf_d =
+ 
+  From input "u1" to output "y1":
+    2.549 z^-1 - 2.955 z^-2 + 3.095 z^-3 - 2.692 z^-4
+  ------------------------------------------------------
+  1 - 1.305 z^-1 + 1.379 z^-2 - 1.232 z^-3 + 0.1649 z^-4
+ 
+Sample time: 30 seconds
+Discrete-time transfer function.
+
+
+Model_tf_c =
+ 
+  From input "u1" to output "y1":
+     0.188 s^3 - 0.0003357 s^2 + 0.0004652 s - 8.799e-09
+  ----------------------------------------------------------
+  s^4 + 0.06009 s^3 + 0.002404 s^2 + 0.0001535 s + 2.306e-08
+ 
+Continuous-time transfer function.
+
+
+num =
+
+         0    2.5493   -2.9555    3.0951   -2.6917
+
+
+den =
+
+    1.0000   -1.3046    1.3791   -1.2321    0.1649
+
+
+num1 =
+
+         0    0.1880   -0.0003    0.0005   -0.0000
+
+
+den1 =
+
+    1.0000    0.0601    0.0024    0.0002    0.0000
+
+&#35686;&#21578;: Output port 1 of '&lt;a
+href="matlab:open_and_hilite_hyperlink
+('myverify2/Idmodel1','error')"&gt;myverify2/Idmodel1&lt;/a&gt;'
+is not connected. 
+
+ans = 
+
+  Simulink.SimulationOutput:
+                   tout: [56x1 double] 
+
+     SimulationMetadata: [1x1 Simulink.SimulationMetadata] 
+           ErrorMessage: [0x0 char] 
+
+</pre><img vspace="5" hspace="5" src="main_03.png" alt=""> <img vspace="5" hspace="5" src="main_04.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% 1911055李拙人
+% clc; clear;
+% num=[1]; den=[1 1];              % 一阶系统
+% den=[1 0.6 1];
+% num=[0.04798 0.0464]; den=[1 -1.81 0.9048];
+% noiseAmp=0.1;
+% sys = tf(num,den);
+sys=linsys1;
+%% 时域分析
+tmp = stepinfo(sys);
+Ts=tmp.SettlingTime
+%% 取-3dB
+[mag,ph,w]=bode(sys);   %依次返回幅频、相频、角频率
+mag = 20*log10(squeeze(mag));    % dB
+% plot(mag,w)
+w0=spline(mag,w,mag(1)-3)    % rad/s 
+
+%% 计算M/IM序列参数
+fM=w0/2/pi     % Hz
+delta=0.3/fM 
+delta = 30;     %根据上面的值，手动取值
+Np=[1/(fM*delta),1.2*Ts/delta,1.5*Ts/delta]    %确定M序列的长度
+
+M_Np=max(round(max(Np)),7); 
+M_T=M_Np*delta;
+M_Np=M_Np*2;
+M_T=M_T*2;
+M_d=delta;
+if M_T>Ts
+    disp('M序列周期大于原始系统')
+end
+simTime=11*M_T
+%%
+sim('mysysIM.slx');
+
+%%
+Q=iddata(myout,myin,M_d);
+figure(2)
+plot(Q);%画出封装的输入输出数据
+dataStart = M_T/M_d;    
+Qe = Q([dataStart:end]);%       去第一个周期
+Qd=detrend(Qe);     %去趋势项
+% plot(Qe,Qd);
+Qde=Qd([1:end/2]);  %前一半数据用来测试
+Qdv=Qd([end/2+1:end]);  %后一半数据用来验证
+figure(3)
+plot(Q,Qd,Qde,Qdv);
+%% ident
+NN=struc(1:10,1:10,1:10);
+Loss_fun= arxstruc(Qde,Qdv,NN);
+order =[4 4 1];
+
+Model=arx(Qde,order)
+
+figure(4)
+compare(Qdv,Model);%预测输出与实际输比较
+figure(5)
+resid(Model,Qde); %模型预测误差及相关分析
+
+
+Model_tf_d=tf(Model) %离散模型
+Model_tf_c=d2c(Model_tf_d) %连续模型
+% Model_tf_c=d2c(Model_tf_d,'tustin')
+
+num=cell2mat(Model_tf_d.num)
+den=cell2mat(Model_tf_d.den)
+num1=cell2mat(Model_tf_c.num)
+den1=cell2mat(Model_tf_c.den)
+sim('myverify2.slx')
+
+
+% plot(simVerifyOut.time,simVerifyOut.signals.values(:,1),simVerifyOut.time,simVerifyOut.signals.values(:,2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### SOURCE END #####
+--></body></html>
